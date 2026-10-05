@@ -15,9 +15,11 @@ let limonY = 0;
 let puntaje = 0;
 let vidas = 3;
 let velocidadCaida = 200 ;
+let intervalo = null ;
+
 
 function iniciar(){
-setInterval(bajarLimon,velocidadCaida);
+intervalo = setInterval(bajarLimon,velocidadCaida);
     dibujarSuelo();
     dibujarPersonaje();
     aparecerLimon();
@@ -58,7 +60,6 @@ function limpiarCanvas(){
 function dibujarLimon (){
     ctx.fillStyle= "green";
     ctx.fillRect(limonX,limonY,ANCHO_LIMON,ALTURA_LIMON);
-
 }
 
 function bajarLimon (){
@@ -77,16 +78,20 @@ function detectarAtrpado (){
         aparecerLimon();
         puntaje = puntaje +1 ;
         mostrarEnSpan("txtPuntaje", puntaje);
+        cambiarVelocidad();
+    }
+}
 
-        if (puntaje == 3){
+function cambiarVelocidad(){
+if (puntaje == 3){
             velocidadCaida = 150 ;
         }else if (puntaje == 6){
             velocidadCaida = 100 ;
         }else if (puntaje == 10){
             alert ("FELICADES ERES EL GANADOR");
+            clearInterval(intervalo);
         }
 
-    }
 }
 
 function detactarPiso (){
@@ -97,7 +102,9 @@ function detactarPiso (){
     }
 
     if (vidas == 0){
+        
         alert ("GAME OVER");
+        clearInterval(intervalo);
     }
 
 }
