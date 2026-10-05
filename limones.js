@@ -77,6 +77,15 @@ function detectarAtrpado (){
         aparecerLimon();
         puntaje = puntaje +1 ;
         mostrarEnSpan("txtPuntaje", puntaje);
+
+        if (puntaje == 3){
+            velocidadCaida = 150 ;
+        }else if (puntaje == 6){
+            velocidadCaida = 100 ;
+        }else if (puntaje == 10){
+            alert ("FELICADES ERES EL GANADOR");
+        }
+
     }
 }
 
