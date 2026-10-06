@@ -29,6 +29,29 @@ body {
   margin: 0 auto;
 }
 
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto 8px;
+}
+
+.portada {
+  display: block;
+  width: 170px;
+  height: 170px;
+  flex: none;
+  margin: 0;
+  object-fit: cover;
+  background: #fff;
+  border: 5px solid var(--limon);
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 4px var(--hoja-oscura),
+    0 14px 28px rgba(0, 0, 0, 0.4);
+}
+
 h1 {
   font-family: "Fredoka", "Trebuchet MS", sans-serif;
   font-weight: 700;
@@ -51,10 +74,16 @@ h1::before {
 }
 
 h2 {
-  font-size: 0.95rem;
+  margin: 0;
+  padding: 12px 18px;
+  text-align: left;
+  font-size: 1rem;
   font-weight: 600;
-  color: rgba(254, 252, 232, 0.7);
-  margin: 0 0 18px;
+  line-height: 1.3;
+  color: var(--crema);
+  background: rgba(254, 252, 232, 0.1);
+  border-left: 5px solid var(--limon);
+  border-radius: 0 14px 14px 0;
 }
 
 canvas {
@@ -196,6 +225,9 @@ canvas {
 @media (max-width: 480px) {
   body { padding: 16px 10px 32px; }
   canvas { border-width: 4px; border-radius: 14px; }
+  .cabecera { gap: 12px; }
+  .portada { width: 110px; height: 110px; }
+  h2 { font-size: 0.9rem; padding: 10px 12px; }
   .panel { gap: 8px; }
   .panel p { min-width: 0; flex: 1; padding: 8px 10px; }
   .botones { gap: 10px; }
