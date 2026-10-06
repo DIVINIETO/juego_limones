@@ -1,31 +1,169 @@
+:root {
+  --hoja: #14532d;
+  --hoja-oscura: #0b3a1e;
+  --limon: #facc15;
+  --limon-claro: #fde68a;
+  --crema: #fefce8;
+  --naranja: #f97316;
+  --cielo-alto: #7dd3fc;
+  --cielo-bajo: #fef9c3;
+}
+
+* { box-sizing: border-box; }
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #0f172a;
-  color: white;
+  font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+  color: var(--crema);
   text-align: center;
   margin: 0;
-  padding: 20px;
+  padding: 24px 16px 40px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(250, 204, 21, 0.18) 0, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(250, 204, 21, 0.12) 0, transparent 45%),
+    linear-gradient(180deg, var(--hoja) 0%, var(--hoja-oscura) 100%);
 }
 
 .contenedor {
-  max-width: 800px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
+h1 {
+  font-family: "Fredoka", "Trebuchet MS", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 7vw, 3.4rem);
+  line-height: 1.05;
+  margin: 8px 0 6px;
+  color: var(--limon);
+  text-shadow: 0 3px 0 var(--hoja-oscura), 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+h1::before {
+  content: "🍋 ";
+}
+
+.contenedor > p {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--limon-claro);
+  margin: 0 0 4px;
+}
+
+h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(254, 252, 232, 0.7);
+  margin: 0 0 18px;
+}
+
 canvas {
-  background-color: #111827;
-  border: 3px solid #38bdf8;
   display: block;
-  margin: 20px auto;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 16px auto;
+  border: 6px solid var(--limon);
+  border-radius: 20px;
+  background: linear-gradient(180deg, var(--cielo-alto) 0%, var(--cielo-bajo) 100%);
+  box-shadow:
+    0 0 0 4px var(--hoja-oscura),
+    0 18px 40px rgba(0, 0, 0, 0.45);
+  touch-action: manipulation;
 }
 
 .panel {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
   margin: 20px 0;
 }
 
+.panel p {
+  margin: 0;
+  min-width: 140px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(254, 252, 232, 0.1);
+  border: 2px solid rgba(250, 204, 21, 0.45);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.panel span {
+  display: inline-block;
+  margin-left: 6px;
+  font-family: "Fredoka", "Trebuchet MS", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--limon);
+  vertical-align: middle;
+}
+
+.panel p:last-child::after {
+  content: " ❤";
+  color: #f87171;
+}
+
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
 .botones button {
-  margin: 5px;
-  padding: 10px 16px;
-  font-size: 16px;
+  font-family: "Fredoka", "Trebuchet MS", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 130px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 14px;
   cursor: pointer;
+  color: var(--hoja-oscura);
+  background: var(--limon);
+  box-shadow: 0 5px 0 #b7950b;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+}
+
+.botones button:hover {
+  background: #fde047;
+}
+
+.botones button:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #b7950b;
+}
+
+.botones button:last-child {
+  color: #fff;
+  background: var(--naranja);
+  box-shadow: 0 5px 0 #b45309;
+}
+
+.botones button:last-child:hover {
+  background: #fb923c;
+}
+
+.botones button:last-child:active {
+  box-shadow: 0 1px 0 #b45309;
+}
+
+.botones button:focus-visible {
+  outline: 3px solid var(--crema);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  body { padding: 16px 10px 32px; }
+  canvas { border-width: 4px; border-radius: 14px; }
+  .panel { gap: 8px; }
+  .panel p { min-width: 0; flex: 1; padding: 8px 10px; }
+  .botones button { flex: 1 1 40%; min-width: 0; padding: 14px 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .botones button { transition: none; }
 }
