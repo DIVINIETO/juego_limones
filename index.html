@@ -22,9 +22,18 @@
 
     </div>
     <div class="botones">
-      <button onclick="moverIzquierda();">Izquierda</button>
-      <button onclick="moverDerecha();" >Derecha</button>
-      <button onclick="reiniciar();" >Reiniciar</button>
+      <button type="button" onclick="moverIzquierda();" aria-label="Mover a la izquierda">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        <span>Izquierda</span>
+      </button>
+      <button type="button" onclick="moverDerecha();" aria-label="Mover a la derecha">
+        <span>Derecha</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <button type="button" onclick="reiniciar();" aria-label="Reiniciar el juego">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg>
+        <span>Reiniciar</span>
+      </button>
     </div>
   </div>
 <script src="limones.js" ></script>
