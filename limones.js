@@ -4,8 +4,8 @@ let ctx = canvas.getContext("2d");
 const ALTURA_SUELO=20;
 const ALTURA_PERSONAJE = 60 ;
 const ANCHO_PERSONAJE = 40 ;
-const ANCHO_LIMON = 20 ;
-const ALTURA_LIMON = 20 ;
+const ANCHO_LIMON = 50 ;
+const ALTURA_LIMON = 50 ;
 
 
 let personajeX= canvas.width/2 ;
@@ -27,7 +27,7 @@ function iniciar(){
 }
 
 function dibujarSuelo(){
-    ctx.fillStyle= "blue";
+    ctx.fillStyle= "red";
     ctx.fillRect(0,canvas.height-ALTURA_SUELO,canvas.width,ALTURA_SUELO);
 }
 
@@ -104,7 +104,7 @@ function detactarPiso (){
 
     if (vidas == 0){
         
-        alert ("GAME OVER");
+        alert ("ACABAS DE PERDER");
         clearInterval(intervalo);
     }
 
@@ -124,4 +124,9 @@ function reiniciar (){
     mostrarEnSpan("txtVida", vidas);
     mostrarEnSpan("txtPuntaje", puntaje);
     iniciar ();
+}
+
+function desaparecerPersonaje (){
+    personajeX = 0 ;
+    ctx.clearRect (limonX,limonY,ANCHO_LIMON,ALTURA_LIMON);
 }
